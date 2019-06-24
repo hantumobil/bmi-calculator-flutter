@@ -114,7 +114,6 @@ class _InputPageState extends State<InputPage> {
                         setState(() {
                           height = newValue.round();
                         });
-                        print(newValue.round());
                       },
                     ),
                   )
@@ -231,13 +230,11 @@ class _InputPageState extends State<InputPage> {
               );
             },
             child: Container(
+              padding: EdgeInsets.only(bottom: 20.0),
               child: Center(
                 child: Text(
                   'CALCULATE',
-                  style: TextStyle(
-                      color: Color(0xccFFFFFF),
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w500),
+                  style: kButtonTextStyle,
                 ),
               ),
               color: kBottomBtnColor,
