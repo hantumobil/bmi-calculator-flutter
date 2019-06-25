@@ -36,6 +36,8 @@ const kResultHeaderTitle = TextStyle(
 
 const kResultTextStyle = TextStyle(
   color: Color(0xFF4DC08B),
+  fontSize: 16.0,
+  fontWeight: FontWeight.bold,
 );
 
 const kResultNumberTextStyle = TextStyle(
@@ -44,5 +46,5 @@ const kResultNumberTextStyle = TextStyle(
 );
 
 const kResultCommentTextStyle = TextStyle(
-  fontSize: 25.89,
+  fontSize: 25.888,
 );

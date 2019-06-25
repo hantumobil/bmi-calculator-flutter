@@ -6,6 +6,7 @@ import 'package:bmi_calculator/components/bottom_button.dart';
 import 'package:bmi_calculator/constants.dart';
 import 'package:bmi_calculator/screens/results_page.dart';
 import 'package:bmi_calculator/components/round_icon_button.dart';
+import 'package:bmi_calculator/calculator_brain.dart';
 
 enum Gender { male, female }
 
@@ -16,9 +17,9 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
-  int height = 180;
-  int weight = 63;
-  int age = 25;
+  int height = 168;
+  int weight = 79;
+  int age = 37;
 
   @override
   Widget build(BuildContext context) {
@@ -140,9 +141,6 @@ class _InputPageState extends State<InputPage> {
                           weight.toString(),
                           style: kNumberTextStyle,
                         ),
-                        SizedBox(
-                          height: 10.0,
-                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
@@ -185,9 +183,6 @@ class _InputPageState extends State<InputPage> {
                           age.toString(),
                           style: kNumberTextStyle,
                         ),
-                        SizedBox(
-                          height: 10.0,
-                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
@@ -219,16 +214,22 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          SizedBox(
-            height: 10.0,
-          ),
           BottomButton(
             buttonTitle: 'CALCULATE',
             onTap: () {
+              CalculatorBrain calc = CalculatorBrain(
+                height: height,
+                weight: weight,
+              );
+
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ResultsPage(),
+                  builder: (context) => ResultsPage(
+                        bmiResult: calc.getBMI(),
+                        resultText: calc.getResultText(),
+                        interpretation: calc.getInterpretation(),
+                      ),
                 ),
               );
             },
